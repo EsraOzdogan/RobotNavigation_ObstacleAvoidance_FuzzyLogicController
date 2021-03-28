@@ -1,0 +1,50 @@
+[System]
+Name='mamdani_Fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Angle'
+Range=[0 40]
+NumMFs=3
+MF1='SMALL':'trapmf',[0 0 10 20]
+MF2='MEDIUM':'trimf',[10 20 30]
+MF3='LARGE':'trapmf',[25 35 40 40]
+
+[Input2]
+Name='Distance'
+Range=[0 20]
+NumMFs=3
+MF1='NEAR':'trapmf',[0 0 6 8]
+MF2='FAR':'trimf',[5 10 15]
+MF3='VERY_FAR':'trapmf',[12 15 20 20]
+
+[Output1]
+Name='Speed'
+Range=[0 100]
+NumMFs=6
+MF1='Very_Slow':'trapmf',[0 0 10 20]
+MF2='Slow':'trimf',[10 25 40]
+MF3='Fast':'trimf',[30 45 60]
+MF4='Fast_Fast':'trimf',[50 60 70]
+MF5='Very_Fast':'trimf',[65 75 90]
+MF6='Top_Speed':'trapmf',[75 90 100 100]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 4 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 5 (1) : 1
+3 1, 3 (1) : 1
+3 2, 5 (1) : 1
+3 3, 6 (1) : 1
